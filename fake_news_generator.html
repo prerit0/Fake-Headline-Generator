@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fake Headline Generator</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #ff3c3c, #ff8c00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff3c3c; }
+      to { text-shadow: 0 0 20px #ff8c00; }
+    }
+
+    .headline {
+      font-size: 1.8rem;
+      text-align: center;
+      background-color: rgba(0,0,0,0.5);
+      padding: 20px 30px;
+      border-radius: 10px;
+      max-width: 90%;
+      box-shadow: 0 0 25px rgba(255,255,255,0.2);
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .headline.show {
+      transform: scale(1.05);
+    }
+
+    button {
+      margin-top: 40px;
+      background-color: #ff3c3c;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      padding: 10px 30px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff6a00;
+    }
+
+    .ticker {
+      position: fixed;
+      bottom: 0;
+      background: rgba(255,0,0,0.85);
+      color: #fff;
+      width: 100%;
+      font-size: 1.2rem;
+      padding: 8px 0;
+      overflow: hidden;
+    }
+
+    .ticker span {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll 12s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Breaking News</h1>
+  <div class="headline" id="headline">Click the button to generate a fake headline!</div>
+  <button onclick="generateHeadline()">Generate Headline</button>
+  
+  <div class="ticker"><span id="tickerText">Stay tuned for more unbelievable stories...</span></div>
+
+  <script>
+    const subjects = [
+      'Salman Khan',
+      'Virat Kohli',
+      'Cristiano Ronaldo',
+      'Kylie jenner'
+    ];
+
+    const actions = [
+      'Playing Football',
+      'Caught cheating on his wife',
+      'Wants to Sleep in garbage truck',
+      'Fighting with President'
+    ];
+
+    const cities = [
+      'on the moon',
+      'in the Parliament',
+      'with a rabbit',
+      'in a Hotel'
+    ];
+
+    function randomChoice(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function generateHeadline() {
+      const headlineEl = document.getElementById("headline");
+      const tickerEl = document.getElementById("tickerText");
+
+      const subject = randomChoice(subjects);
+      const action = randomChoice(actions);
+      const city = randomChoice(cities);
+
+      const headline = `${subject} ${action} ${city}`;
+      headlineEl.textContent = headline;
+
+      headlineEl.classList.remove("show");
+      void headlineEl.offsetWidth; // restart animation
+      headlineEl.classList.add("show");
+
+      tickerEl.textContent = "Latest: " + headline + " | Stay tuned for more...";
+    }
+  </script>
+</body>
+</html>
