@@ -21,6 +21,6 @@ Choose whether to generate more
 💡 Example Output
 1. Virat Kohli Playing Football on the moon!
 2. Kylie Jenner Fighting with President in a Hotel!
+   
 📌 Note
-
 This project is for fun and learning purposes only.
