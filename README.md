@@ -1,3 +1,5 @@
+<img width="1536" height="1024" alt="fake new generator" src="https://github.com/user-attachments/assets/819e00b0-568a-409f-822e-8b8b7119fe75" />
+
 # 📰 Fake News Headline Generator
 
 A simple Python project that generates random and fun fake news headlines using predefined lists of subjects, actions, and objects.
